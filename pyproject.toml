@@ -32,6 +32,7 @@ test = [
     "pytest-mock >= 3.10.0",
     "pytest-xdist >= 3.3.1",
     "pytest-cov >= 2.12.1",
+    "testfixtures >= 6.19.0",
 ]
 # gui = ["PyQt5"]
 # cli = ["rich", "click"]
