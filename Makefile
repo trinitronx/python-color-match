@@ -7,11 +7,11 @@ package = color_match
 
 # For local development
 test:
-	pytest -s -v test/test_$(test_files).py --doctest-modules --cov $(package) --cov-config=.coveragerc --cov-report term-missing
+	pytest -s -v
 
 # For github actions
 test-ci:
-	pytest -s -v test/test_$(test_files).py --doctest-modules --cov $(package) --cov-config=.coveragerc --cov-report=xml
+	pytest -s -v --cov-report=xml
 
 lint:
 	@echo "Running ruff..."
