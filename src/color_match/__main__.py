@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Main entry point for the color match library."""
 
+import sys
+
 from .util.color import calculate_delta_e
 
 
@@ -48,6 +50,6 @@ if __name__ == "__main__":
     else:
         target_colors_file = sys.argv[1]
         palette_colors_file = sys.argv[2]
-        print(f"Arguments received: {arg1}, {arg2}")
+        print(f"Arguments received: {target_colors_file}, {palette_colors_file}")
         main(target_colors_file, palette_colors_file)
         exit(0)
