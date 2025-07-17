@@ -1,0 +1,114 @@
+[project]
+name = "color_match"
+version = "0.0.1"
+description = "Color match utility. Finds closest color match via Delta E CIE 2000"
+readme = "README.md"
+requires-python = ">=3.0"
+license = { file = "LICENSE" }
+keywords = ["color match", "color", "match", "delta E"]
+authors = [{ name = "James Cuzella", email = "james.cuzella@lyraphase.com" }]
+maintainers = [
+    { name = "James Cuzella", email = "james.cuzella@lyraphase.com" },
+]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Programming Language :: Python",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Utilities",
+]
+
+dependencies = ["colormath"]
+
+# dynamic = ["version", "description"]
+
+# [project.optional-dependencies]
+# gui = ["PyQt5"]
+# cli = ["rich", "click"]
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+exclude = ["example*",
+           "docs*",
+           "test*",
+           "color_match.example*"]
+#include = ["color_match"]
+where = ["src"]
+namespaces = false
+
+# [project.entry-points."waybar-check-gmail.magical"]
+# tomatoes = "waybar-check-gmail:main_tomatoes"
+
+# [tool.poetry.dev-dependencies]
+# black = { version = "*", allow-prereleases = true }
+
+[tool.poetry.group.test.dependencies]
+pytest = "^6.0.0"
+pytest-mock = "^3.10.0"
+pytest-xdist = "^3.3.1"
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+line_length = 90
+profile = "black"
+# TODO: tox4 config?
+# Ref: https://github.com/tox-dev/tox/issues/999
+
+[tool.black]
+line-length = 90
+exclude = '''
+/(
+    \.git
+  | \.direnv
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \.vscode
+  | _build
+  | __pycache__
+  | build
+  | dist
+
+  # specific to waybar-check-gmail
+  | ^/assets
+)/
+'''
+# Targeting future versions as well so we don't have black reformatting code
+# en masse later.
+target_version = ["py37", "py38", "py39", "py310", "py311"]
+
+[tool.bandit]
+exclude_dirs = [
+    ".tox",
+    "tests",
+    ".vscode",
+    "coverage-*",
+    "*.egg-info",
+    "*.pyc",
+    "__pycache__",
+    ".pytest_cache",
+    "test-results*",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  ".", "src",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "serial",
+    "great: It's not good, not bad, but somewhat better than good? ¯\\_(ツ)_/¯",
+]
+
