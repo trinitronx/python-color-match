@@ -26,7 +26,13 @@ dependencies = ["colormath"]
 
 # dynamic = ["version", "description"]
 
-# [project.optional-dependencies]
+[project.optional-dependencies]
+test = [
+    "pytest >= 6.0.0",
+    "pytest-mock >= 3.10.0",
+    "pytest-xdist >= 3.3.1",
+    "pytest-cov >= 2.12.1",
+]
 # gui = ["PyQt5"]
 # cli = ["rich", "click"]
 
@@ -56,6 +62,7 @@ namespaces = false
 pytest = "^6.0.0"
 pytest-mock = "^3.10.0"
 pytest-xdist = "^3.3.1"
+pytest-cov = "^2.12.1"
 
 [tool.isort]
 multi_line_output = 3
@@ -106,9 +113,15 @@ exclude_dirs = [
 pythonpath = [
   ".", "src",
 ]
+testpaths = ["test"]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "serial",
     "great: It's not good, not bad, but somewhat better than good? ¯\\_(ツ)_/¯",
 ]
-
+addopts = [
+    "--doctest-modules",
+    "--cov=src",
+    "--cov-config=.coveragerc",
+    "--cov-report=term-missing",
+]
