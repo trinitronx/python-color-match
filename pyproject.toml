@@ -73,6 +73,9 @@ profile = "black"
 # TODO: tox4 config?
 # Ref: https://github.com/tox-dev/tox/issues/999
 
+[tool.ruff]
+target-version = "py310"
+
 [tool.black]
 line-length = 90
 exclude = '''
