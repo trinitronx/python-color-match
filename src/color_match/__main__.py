@@ -51,5 +51,5 @@ if __name__ == "__main__":
         target_colors_file = sys.argv[1]
         palette_colors_file = sys.argv[2]
         print(f"Arguments received: {target_colors_file}, {palette_colors_file}")
-        main(target_colors_file, palette_colors_file)
-        exit(0)
+        ret = main(target_colors_file, palette_colors_file)
+        exit(ret)
