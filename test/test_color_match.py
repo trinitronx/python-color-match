@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""Unit tests for the color_match module."""
+
 from color_match.__main__ import main
 
 

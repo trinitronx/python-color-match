@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""Unit tests for color utility functions."""
+
 from pytest import approx
 
 from color_match.util.color import (  # Adjust the import if needed

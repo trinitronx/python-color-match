@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+"""Main entry point for the color match library."""
+
 
 def main():
     print(

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Color utility functions."""
 
 from numpy import __version__ as numpy_version
