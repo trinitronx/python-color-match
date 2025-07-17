@@ -3,13 +3,15 @@ rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(su
 files = test $(call rwildcard,src,*.py)
 test_files = *
 
+package = color_match
+
 # For local development
 test:
-	pytest -s -v test/test_$(test_files).py --doctest-modules --cov python_nftables_monitor --cov-config=.coveragerc --cov-report term-missing
+	pytest -s -v test/test_$(test_files).py --doctest-modules --cov $(package) --cov-config=.coveragerc --cov-report term-missing
 
 # For github actions
 test-ci:
-	pytest -s -v test/test_$(test_files).py --doctest-modules --cov python_nftables_monitor --cov-config=.coveragerc --cov-report=xml
+	pytest -s -v test/test_$(test_files).py --doctest-modules --cov $(package) --cov-config=.coveragerc --cov-report=xml
 
 lint:
 	@echo "Running ruff..."
@@ -22,14 +24,20 @@ fix:
 
 install:
 	pip install -U --editable .
+	which pyenv && pyenv rehash
+
+install-test:
+	pip install -U --editable .[test]
+	which pyenv && pyenv rehash
 
 install-all:
-	pip install -U --editable .[,doc]
+	pip install -U --editable .[test,doc]
+	which pyenv && pyenv rehash
 
 report:
 	codecov
 
-build: python_nftables_monitor
+build:
 	rm -rf dist
 	python -m build
 
