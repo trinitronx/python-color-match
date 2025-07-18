@@ -96,8 +96,8 @@ int main(void) {
   if (print_heading == 1)
     printf("%s%scolor   num %sfg %s%sbg%s\n", boldU, cynfg, grnfg, blkfg, grnbg, reset);
   // Prints lines: #xxxxxx nn █ <- color block
-  for (int i=0; i < array_length; i++) {
-    printf("#%06llx %03i", default_color_table[i], i);
+  for (size_t i=0; i < array_length; i++) {
+    printf("#%06x %03li", default_color_table[i], i);
     printf(" ");
     set_foreground_color(i);
     printf("█"); // fg color block (utf-8 full block char '█')
