@@ -1,6 +1,12 @@
+#include <assert.h>
+#include <limits.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdint.h>
+
+#if !defined __cplusplus
+#define static_assert _Static_assert
+#endif
 
 // From dnkl/foot config.c:
 // https://codeberg.org/dnkl/foot/src/commit/692b22cbbb24efa91cb24446d189bc8c2535c1ac/config.c#L38-L107
@@ -56,6 +62,9 @@ static const uint32_t default_color_table[256] = {
     0xd0d0d0, 0xdadada, 0xe4e4e4, 0xeeeeee
 };
 
+#define ARRAY_LENGTH                                                           \
+  (sizeof(default_color_table) / sizeof(default_color_table[0]))
+
 /*
  * Color Functions
  *
@@ -80,9 +89,12 @@ void reset_colors() {
 }
 
 int main(void) {
-  size_t total_size = sizeof(default_color_table);
-  size_t element_size = sizeof(default_color_table[0]);
-  size_t array_length = total_size / element_size;
+  // static const size_t total_size = sizeof(default_color_table);
+  // static const size_t element_size = sizeof(default_color_table[0]);
+  // static const size_t array_length = total_size / element_size;
+
+  // Compile-time check to ensure array length fits in int
+  static_assert(ARRAY_LENGTH <= INT_MAX, "default_color_table[] array length exceeds int range");
 
   bool print_heading = true;
 
@@ -96,8 +108,8 @@ int main(void) {
   if (print_heading == 1)
     printf("%s%scolor   num %sfg %s%sbg%s\n", boldU, cynfg, grnfg, blkfg, grnbg, reset);
   // Prints lines: #xxxxxx nn █ <- color block
-  for (size_t i=0; i < array_length; i++) {
-    printf("#%06x %03li", default_color_table[i], i);
+  for (int i=0; i < (int)ARRAY_LENGTH; i++) {
+    printf("#%06x %03i", default_color_table[i], i);
     printf(" ");
     set_foreground_color(i);
     printf("█"); // fg color block (utf-8 full block char '█')
