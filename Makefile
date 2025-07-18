@@ -13,6 +13,12 @@ test:
 test-ci:
 	pytest -s -v --cov-report=xml
 
+test-fixtures:
+	make -C test/fixtures
+
+test-fixtures-install:
+	make -C test/fixtures install
+
 lint:
 	@echo "Running ruff..."
 	@ruff check $(files)
@@ -47,5 +53,6 @@ publish:
 clean::
 	rm -rf dist
 	rm -rf src/*.egg-info
+	make -C test/fixtures clean
 
 .PHONY: test test-cli build clean lint fix install $(INSTALL_GROUP_TARGETS) report publish
