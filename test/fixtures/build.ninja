@@ -1,0 +1,12 @@
+# Variables
+CFLAGS = -Wall -Wextra -pedantic -std=c99
+
+# Rule for compiling C files
+rule cc
+  command = gcc $CFLAGS -o $out $in
+
+# Build foot-default-colors executable
+build foot-default-colors: cc foot-default-colors.c
+
+# Build print-xterm-256-colors executable
+build print-xterm-256-colors: cc print-xterm-256-colors.c
