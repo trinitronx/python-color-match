@@ -1,5 +1,5 @@
 # Variables
-MESON_BUILD_DIR = build
+MESON_BUILD_DIR = builddir
 NINJA = ninja
 
 # Phony targets
