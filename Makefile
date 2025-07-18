@@ -24,15 +24,14 @@ fix:
 
 install:
 	pip install -U --editable .
-	which pyenv && pyenv rehash
+	which pyenv >/dev/null 2>&1 && pyenv rehash
 
-install-test:
-	pip install -U --editable .[test]
-	which pyenv && pyenv rehash
+INSTALL_GROUP_TARGETS = install-build install-test install-dev
 
-install-all:
-	pip install -U --editable .[test,doc]
-	which pyenv && pyenv rehash
+$(INSTALL_GROUP_TARGETS): | install
+install-%:
+	pip install --group $*
+	which pyenv >/dev/null 2>&1 && pyenv rehash
 
 report:
 	codecov
@@ -48,4 +47,4 @@ publish:
 clean::
 	rm -rf dist
 
-.PHONY: test build clean
+.PHONY: test test-cli build clean lint fix install $(INSTALL_GROUP_TARGETS) report publish
