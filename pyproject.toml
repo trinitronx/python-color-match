@@ -135,3 +135,7 @@ addopts = [
     "--cov-config=.coveragerc",
     "--cov-report=term-missing",
 ]
+
+[[tool.mypy.overrides]]
+module = ["testfixtures.*"]
+follow_untyped_imports = true
