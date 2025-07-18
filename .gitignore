@@ -239,3 +239,8 @@ tmp/
 .project
 .classpath
 /gradle
+
+## Custom for this project
+# C / meson test fixtures
+test/fixtures/builddir
+test/fixtures/bin
