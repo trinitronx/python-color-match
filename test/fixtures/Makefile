@@ -1,9 +1,10 @@
 # Variables
 MESON_BUILD_DIR = builddir
+INSTALL_DIR = $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 NINJA = ninja
 
 # Phony targets
-.PHONY: setup_meson build_meson install_meson clean
+.PHONY: setup_meson build_meson install install_meson clean
 
 # Default target
 all: build_meson
@@ -18,13 +19,14 @@ setup_meson: $(MESON_BUILD_DIR)/build.ninja
 # Rule to set up Meson build directory
 $(MESON_BUILD_DIR)/build.ninja \
 $(MESON_BUILD_DIR)/compile_commands.json: meson.build | $(MESON_BUILD_DIR)
-	@meson setup $(MESON_BUILD_DIR)
+	@meson setup $(MESON_BUILD_DIR) --prefix=$(INSTALL_DIR)
 
 # Build using Meson/Ninja
 build_meson: $(MESON_BUILD_DIR)/build.ninja
 	@$(NINJA) -C $(MESON_BUILD_DIR)
 
 # Install binaries
+install: install_meson
 install_meson: build_meson
 	@$(NINJA) -C $(MESON_BUILD_DIR) install
 
