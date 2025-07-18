@@ -32,6 +32,7 @@ install_meson: build_meson
 
 # Clean build directory
 clean::
+	@rm -rf $(INSTALL_DIR)/bin
 	@rm -rf $(MESON_BUILD_DIR)
 
 # Phony targets for Ninja
