@@ -45,4 +45,7 @@ publish:
 	make build
 	twine upload --config-file ~/.pypirc -r pypi dist/*
 
-.PHONY: test build
+clean::
+	rm -rf dist
+
+.PHONY: test build clean
