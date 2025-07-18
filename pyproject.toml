@@ -104,7 +104,7 @@ exclude = '''
 '''
 # Targeting future versions as well so we don't have black reformatting code
 # en masse later.
-target_version = ["py37", "py38", "py39", "py310", "py311"]
+target-version = ["py37", "py38", "py39", "py310", "py311"]
 
 [tool.bandit]
 exclude_dirs = [
