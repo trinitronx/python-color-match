@@ -38,7 +38,7 @@ report:
 
 build:
 	rm -rf dist
-	python -m build
+	python -m build --sdist --wheel
 
 publish:
 	make build
@@ -46,5 +46,6 @@ publish:
 
 clean::
 	rm -rf dist
+	rm -rf src/*.egg-info
 
 .PHONY: test test-cli build clean lint fix install $(INSTALL_GROUP_TARGETS) report publish
