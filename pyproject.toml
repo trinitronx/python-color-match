@@ -4,7 +4,8 @@ version = "0.0.1"
 description = "Color match utility. Finds closest color match via Delta E CIE 2000"
 readme = "README.md"
 requires-python = ">=3.0"
-license = { file = "LICENSE" }
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
 keywords = ["color match", "color", "match", "delta E"]
 authors = [{ name = "James Cuzella", email = "james.cuzella@lyraphase.com" }]
 maintainers = [
@@ -15,7 +16,6 @@ classifiers = [
     "Programming Language :: Python",
     "Environment :: Console",
     "Intended Audience :: End Users/Desktop",
-    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
     "Natural Language :: English",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3",
