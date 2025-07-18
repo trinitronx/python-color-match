@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Unit tests for color utility functions."""
 
-from colormath.color_objects import sRGBColor
+from colormath2.color_objects import sRGBColor
 from pytest import approx
 from testfixtures import compare
 

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Utility functions for color manipulation and calculations."""
 
-from colormath.color_conversions import convert_color
-from colormath.color_diff import delta_e_cie2000
-from colormath.color_objects import LabColor, sRGBColor
+from colormath2.color_conversions import convert_color
+from colormath2.color_diff import delta_e_cie2000
+from colormath2.color_objects import LabColor, sRGBColor
 
 
 def hex_to_rgb(hex_color: str) -> sRGBColor:
