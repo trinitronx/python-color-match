@@ -5,6 +5,9 @@ NINJA = ninja
 # Phony targets
 .PHONY: setup_meson build_meson install_meson clean
 
+# Default target
+all: build_meson
+
 $(MESON_BUILD_DIR):
 	@mkdir -p $(MESON_BUILD_DIR)
 
@@ -39,6 +42,3 @@ build_ninja: build.ninja | $(MESON_BUILD_DIR)
 # Install binaries (assuming a similar install rule in build.ninja)
 #install_ninja: $(MESON_BUILD_DIR) build.ninja
 #	@$(NINJA) install
-
-# Default target
-all: build_meson
