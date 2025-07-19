@@ -33,6 +33,7 @@ test = [
     "pytest-xdist >= 3.3.1",
     "pytest-cov >= 2.12.1",
     "testfixtures >= 6.19.0",
+    "mypy >= 1.0",
 ]
 build = [
     "setuptools >= 61.0.0",

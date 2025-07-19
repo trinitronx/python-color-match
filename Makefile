@@ -32,10 +32,7 @@ install:
 	pip install -U --editable .
 	which pyenv >/dev/null 2>&1 && pyenv rehash
 
-INSTALL_GROUP_TARGETS = install-build install-test install-dev
-
-$(INSTALL_GROUP_TARGETS): | install
-install-%:
+install-%: | install
 	pip install --group $*
 	which pyenv >/dev/null 2>&1 && pyenv rehash
 
