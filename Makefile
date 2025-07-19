@@ -51,7 +51,7 @@ publish:
 	twine upload --config-file ~/.pypirc -r pypi dist/*
 
 clean::
-	rm -rf dist
+	rm -rf dist build
 	rm -rf src/*.egg-info
 	make -C test/fixtures clean
 
