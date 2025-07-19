@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Main entry point for the color match library."""
 
+import re
 import sys
 
 from .util.color import calculate_delta_e
@@ -16,13 +17,19 @@ def main(target_colors_file: str, palette_colors_file: str) -> int:
     Returns:
         int: Exit code, 0 for success, 1 for failure.
     """
-    print(
-        f"This is only printed when running {__file__} directly, because the __name__ is {__name__}"
-    )
+    # print(
+    #     f"This is only printed when running {__file__} directly, because the __name__ is {__name__}"
+    # )
     with open(target_colors_file, "r") as target_file:
-        target_colors = target_file.read().strip().splitlines()
+        target_colors_lines = target_file.read().strip().splitlines()
+        target_colors = re.findall(
+            r"#[0-9a-fA-F]{6}", "".join(target_colors_lines)
+        )
     with open(palette_colors_file, "r") as palette_file:
-        palette_colors = palette_file.read().strip().splitlines()
+        palette_colors_lines = palette_file.read().strip().splitlines()
+        palette_colors = re.findall(
+            r"#[0-9a-fA-F]{6}", "".join(palette_colors_lines)
+        )
 
     if not target_colors or not palette_colors:
         print("No colors found in one of the files.")
