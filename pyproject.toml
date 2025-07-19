@@ -78,16 +78,17 @@ pytest-cov = "^2.12.1"
 multi_line_output = 3
 include_trailing_comma = true
 force_grid_wrap = 0
-line_length = 90
+line_length = 88
 profile = "black"
 # TODO: tox4 config?
 # Ref: https://github.com/tox-dev/tox/issues/999
 
 [tool.ruff]
 target-version = "py310"
+line-length = 88
 
 [tool.black]
-line-length = 90
+line-length = 88
 exclude = '''
 /(
     \.git

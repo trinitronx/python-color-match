@@ -4,8 +4,6 @@
 from numpy import __version__ as numpy_version
 
 if numpy_version >= "2.0":
-    from .monkeypatch import numpy_asscalar as numpy_asscalar
+    from .monkeypatch import numpy_asscalar as numpy_asscalar  # noqa F401
 
-from . import color as color
-
-# print(f"{__file__} imported")
+from . import color as color  # noqa F401

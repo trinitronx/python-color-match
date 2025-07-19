@@ -9,7 +9,9 @@ from color_match.__main__ import main
 
 MOCKED_FILE_DATA = {
     "target_colors.txt": "#eb0028\n#ff5733\n#c70039\n#900c3f\n#eb0028",
-    "palette_colors.txt": "#ff5733\n#c70039\n#900c3f\n#cd3f45\n#870000\n#af0000\n#d70000\n#ff0000",
+    "palette_colors.txt": (
+        "#ff5733\n#c70039\n#900c3f\n#cd3f45\n#870000\n#af0000\n#d70000\n#ff0000"
+    ),
     "non_existent.txt": None,  # Indicates a file that should raise FileNotFoundError
 }
 
@@ -23,7 +25,8 @@ def custom_mock_open_file(filename, *args, **kwargs):
         if MOCKED_FILE_DATA[filename] is None:
             raise FileNotFoundError(f"No such file or directory: '{filename}'")
         mock_file = mock_open(read_data=MOCKED_FILE_DATA[filename])
-        # If you need to mock line-by-line iteration, you can also set __iter__.return_value
+        # If you need to mock line-by-line iteration, you can also set
+        # __iter__.return_value
         mock_file.return_value.__iter__.return_value = MOCKED_FILE_DATA[
             filename
         ].splitlines(True)
