@@ -43,12 +43,15 @@ python -m color_match target_colors.txt palette_colors.txt
 Example output:
 
 ```text
+Target colors: ['#eb0028']
+Palette colors: ['#cd3f45', '#d70000', '#ff0000', '#c70039', '#ff5733']
 Closest matches for #eb0028:
   #cd3f45 with Delta E: 7.03
   #d70000 with Delta E: 7.35
   #ff0000 with Delta E: 7.78
   #c70039 with Delta E: 10.44
   #ff5733 with Delta E: 12.45
+Color matching completed successfully.
 ```
 
 ### Library Usage
