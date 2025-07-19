@@ -22,7 +22,7 @@ classifiers = [
     "Topic :: Utilities",
 ]
 
-dependencies = ["colormath2"]
+dependencies = ["basic_colormath"]
 
 # dynamic = ["version", "description"]
 

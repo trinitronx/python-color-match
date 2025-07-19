@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """Unit tests for color utility functions."""
 
-from colormath2.color_objects import sRGBColor
 from pytest import approx
 from testfixtures import compare
 
@@ -26,9 +25,10 @@ def test_hex_to_rgb():
     """
 
     result = hex_to_rgb("#eb0028")
-    assert isinstance(result, sRGBColor)
-    compare(
-        result,
-        sRGBColor(235, 0, 40, is_upscaled=True),
-        normalize=True,
-    )
+    # Check if result is a tuple with 3 elements
+    assert isinstance(result, tuple)
+    assert len(result) == 3
+    # Check each element is a float
+    assert all(isinstance(val, float) for val in result)
+    # Compare with expected values
+    compare(result, (235, 0, 40))

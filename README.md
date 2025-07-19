@@ -66,8 +66,8 @@ delta_e = calculate_delta_e("#eb0028", "#d70000")
 print(f"Delta E: {delta_e:.2f}")
 ```
 
-Currently, this is a convenience wrapper around the `colormath2` library, which
-provides many more color math functions.
+Currently, this is a convenience wrapper around the `basic_colormath` library,
+which provides many more color math functions.
 
 ## Development
 
@@ -196,8 +196,13 @@ distribution for development purposes.
 
 ### Dependencies
 
-- **colormath2**: For color space conversions and Delta E calculations.
-- **numpy**: For numerical operations (used indirectly via `colormath2`).
+- **basic_colormath**: For color space conversions and Delta E calculations.
+- **~~numpy~~**: ~~For numerical operations~~ (only used indirectly via
+  `basic_colormath[vectorize]`).
+  - This project was refactored to use `basic_colormath` rather than `colormath`
+    or `colormath2`
+  - It does not yet use the `vectorize` optional feature, thus this dependency
+    is unneeded.
 - **pytest**: For running unit tests.
 
 ### License
