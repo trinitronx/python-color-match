@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"python-envs.pythonProjects": [],
+		"makefile.configureOnOpen": false,
+		"python-envs.defaultEnvManager": "ms-python.python:venv",
+		"python.testing.pytestEnabled": true,
+		"C_Cpp.default.compileCommands": "${workspaceFolder}/test/fixtures/builddir/compile_commands.json",
+		"C_Cpp.default.configurationProvider": "mesonbuild.mesonbuild",
+		"C_Cpp.codeAnalysis.clangTidy.enabled": true,
+		"clang-tidy.lintOnSave": true,
+		"clangd.enable": true,
+		"mesonbuild.buildFolder": "builddir",
+		"sonarlint.pathToCompileCommands": "${workspaceFolder}/test/fixtures/compile_commands.json",
+		"sonarlint.disableTelemetry": true,
+		"sonarlint.testFilePattern": "test/fixtures/test_*.py",
+	}
+}
